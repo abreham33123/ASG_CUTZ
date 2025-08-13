@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Vintage Razor | Barber Shop</title>
+  <meta name="description" content="Clean cuts, crisp lines, and classic vibes. Book your next appointment at The Vintage Razor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png">
+  <style>
+    :root{
+      --bg:#0f1115; --surface:#141821; --muted:#9aa4b2; --text:#f3f5f7;
+      --brand:#d5a15e; --brand-2:#8f6b3b; --maxw:1100px; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif}
+    a{color:inherit} img{max-width:100%;display:block}
+
+    .nav{position:sticky;top:0;z-index:50;background:rgba(20,24,33,.85);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #1e2431}
+    .nav-inner{max-width:var(--maxw);margin:auto;display:flex;align-items:center;gap:12px;padding:10px 20px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .brand-logo{width:40px;height:40px;object-fit:contain;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+    .brand-name{font:700 18px/1 Playfair Display,serif;letter-spacing:.4px}
+    .spacer{flex:1} .menu{display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:999px;border:1px solid #2a3140;text-decoration:none;transition:.2s background,.2s border}
+    .btn:hover{background:#1a2030} .primary{border:0;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#111;font-weight:800}
+
+    .hero{position:relative;overflow:hidden}
+    .hero-inner{max-width:var(--maxw);margin:auto;display:grid;gap:30px;align-items:center;padding:72px 20px}
+    @media(min-width:900px){.hero-inner{grid-template-columns:1.1fr .9fr;padding:96px 20px}}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#1a2030;border:1px solid #2a3140;color:#cbd5e1;font-size:12px}
+    h2{font:700 clamp(34px,5vw,56px)/1.1 Playfair Display,serif;margin:12px 0 14px}
+    .hero p{color:var(--muted);margin:0 0 24px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .cta a{padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid #313a4e}
+    .cta .solid{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#111;border:0}
+    .hero-card{background:linear-gradient(180deg,#171b24,#121722 60%);border:1px solid #242b3a;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .hero-photo{border:1px solid #2a3140;border-radius:14px;overflow:hidden}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;min-height:520px;background:#0b0e14}
+
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#1a2030;border:1px solid #2a3140}
+    section{padding:56px 20px}
+    .container{max-width:var(--maxw);margin:auto}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
+    .section-title h3{font:800 26px/1.2 Inter,system-ui;margin:0}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:16px}
+    @media(min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:linear-gradient(180deg,#151a24,#121722);border:1px solid #242b3a;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .price{margin-left:auto;font-weight:800;color:var(--brand)}
+    .svc{display:flex;gap:12px;align-items:center}
+    .svc h4{margin:0}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:900px){.gallery{grid-template-columns:repeat(4,1fr)}}
+    figure{margin:0}
+    figcaption{padding:8px 10px;font-size:13px;color:#cbd5e1;background:#151a24;border-top:1px solid #242b3a}
+    .shot{aspect-ratio:1/1;border-radius:12px;overflow:hidden;border:1px solid #2a3140;background:#0b0e14}
+    .booking-embed{height:640px;border:1px solid #2a3140;border-radius:var(--radius);overflow:hidden;background:#0b0e14}
+    .booking-embed iframe{width:100%;height:100%;border:0}
+    .embed-note{font-size:14px;color:#9aa4b2;margin-top:10px}
+    .hours{display:grid;gap:18px}
+    @media(min-width:900px){.hours{grid-template-columns:1.1fr .9fr}}
+    .list{list-style:none;padding:0;margin:8px 0 0}
+    .list li{display:flex;justify-content:space-between;border-bottom:1px dashed #263046;padding:8px 0}
+    .contact-card a{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:10px;background:#1a2030;border:1px solid #2a3140;text-decoration:none}
+    footer{border-top:1px solid #1e2431;padding:28px 20px;color:#9aa4b2}
+
+    /* Mobile menu hidden by default (prevents double nav on desktop) */
+    .mobile{display:none}
+    .mobile-toggle{display:none}
+    @media(max-width:760px){
+      .menu{display:none}
+      .mobile-toggle{display:inline-flex;margin-left:auto;padding:8px 10px;border-radius:10px;border:1px solid #2a3140;background:#1a2030}
+      .mobile.open{display:flex;flex-direction:column;gap:8px;padding:10px 20px;border-top:1px solid #1e2431}
+      .mobile a{padding:10px 12px;border-radius:10px;border:1px solid #2a3140;text-decoration:none;background:#131826}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Go to top">
+        <img src="logo.png" alt="The Vintage Razor logo" class="brand-logo">
+        <span class="brand-name">The Vintage Razor</span>
+      </a>
+      <div class="spacer"></div>
+      <div class="menu" role="menubar">
+        <a class="btn" href="about.html" role="menuitem">About</a>
+        <a class="btn" href="#services" role="menuitem">Services</a>
+        <a class="btn" href="#gallery" role="menuitem">Gallery</a>
+        <a class="btn" href="#hours" role="menuitem">Hours</a>
+        <a class="btn primary" href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener">Book Now</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.mobile').classList.toggle('open')">☰</button>
+    </div>
+    <div class="mobile" aria-label="Mobile menu">
+      <a href="about.html" onclick="this.closest('.mobile').classList.remove('open')">About</a>
+      <a href="#services" onclick="this.closest('.mobile').classList.remove('open')">Services</a>
+      <a href="#gallery" onclick="this.closest('.mobile').classList.remove('open')">Gallery</a>
+      <a href="#hours" onclick="this.closest('.mobile').classList.remove('open')">Hours</a>
+      <a href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener" onclick="this.closest('.mobile').classList.remove('open')">Book Now</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <span class="badge">Classic • Clean • Consistent</span>
+        <h2>Barbering with old-school soul and modern precision.</h2>
+        <p>Fresh fades, sharp lineups, and beard work done right. Pull up, relax, and roll out looking brand new.</p>
+        <div class="cta">
+          <a class="solid btn" href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener">Book on Booksy</a>
+          <a class="btn" href="#services">See Services</a>
+        </div>
+        <p class="muted" style="margin-top:10px">Prefer texting? <a href="tel:+16513527374" aria-label="Call us">Call/Text (651) 352-7374</a></p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-photo">
+          <img src="hero.jpg" alt="Barber chair and tools in a classic shop">
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px;align-items:center;justify-content:space-between">
+          <span class="pill" title="Average rating"><span aria-hidden>⭐️⭐️⭐️⭐️⭐️</span> 5.0 on Booksy</span>
+          <a class="btn" href="#gallery">View Cuts</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="section-title">
+        <h3 id="services-title">Services & Pricing</h3>
+        <span class="muted">Simple menu. No surprises.</span>
+      </div>
+      <div class="grid cols-3">
+        <div class="card"><div class="svc"><div><h4>Beard</h4><p>Clean up and shape the beard.</p></div><span class="price">$20</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Beard Shaping</h4><p>Detail work to refine beard lines.</p></div><span class="price">$15</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Beard Shave</h4><p>Classic shave for a smooth finish.</p></div><span class="price">$20</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Beard Trim</h4><p>Quick trim to keep it neat.</p></div><span class="price">$15</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Buzz Cut</h4><p>Even clipper cut, simple and clean.</p></div><span class="price">$20</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Haircut</h4><p>Any style — fades, tapers, scissors.</p></div><span class="price">$25</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Haircut &amp; Beard</h4><p>Full service combo.</p></div><span class="price">$35</span></div></div>
+        <div class="card"><div class="svc"><div><h4>Kid’s Haircut</h4><p>Under 12.</p></div><span class="price">$20</span></div></div>
+      </div>
+      <div style="margin-top:18px">
+        <a class="btn primary" href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener">Book Now</a>
+        <span class="muted" style="margin-left:10px">Final prices follow Booksy.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section-title">
+        <h3 id="gallery-title">Gallery</h3>
+        <span class="muted">Styles you can book today</span>
+      </div>
+      <div class="gallery">
+        <figure class="shot"><img alt="Low Fade + Beard" src="gallery/style-01.jpg"><figcaption>Low Fade + Beard</figcaption></figure>
+        <figure class="shot"><img alt="Curly Top Taper" src="gallery/style-02.jpg"><figcaption>Curly Top Taper</figcaption></figure>
+        <figure class="shot"><img alt="Mid Fade + Beard" src="gallery/style-03.jpg"><figcaption>Mid Fade + Beard</figcaption></figure>
+        <figure class="shot"><img alt="Line-Up + Taper" src="gallery/style-04.jpg"><figcaption>Line-Up + Taper</figcaption></figure>
+        <figure class="shot"><img alt="Classic Crop" src="gallery/style-05.jpg"><figcaption>Classic Crop</figcaption></figure>
+        <figure class="shot"><img alt="Mid Skin Fade" src="gallery/style-06.jpg"><figcaption>Mid Skin Fade</figcaption></figure>
+        <figure class="shot"><img alt="High Fade + Beard" src="gallery/style-07.jpg"><figcaption>High Fade + Beard</figcaption></figure>
+        <figure class="shot"><img alt="Burst/Drop Fade" src="gallery/style-08.jpg"><figcaption>Burst/Drop Fade</figcaption></figure>
+        <figure class="shot"><img alt="High Taper" src="gallery/style-09.jpg"><figcaption>High Taper</figcaption></figure>
+        <figure class="shot"><img alt="Temple Fade" src="gallery/style-10.jpg"><figcaption>Temple Fade</figcaption></figure>
+        <figure class="shot"><img alt="360 Waves Fade" src="gallery/style-11.jpg"><figcaption>360 Waves Fade</figcaption></figure>
+        <figure class="shot"><img alt="Low Taper" src="gallery/style-12.jpg"><figcaption>Low Taper</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" aria-labelledby="booking-title">
+    <div class="container">
+      <div class="section-title">
+        <h3 id="booking-title">Book an Appointment</h3>
+        <span class="muted">Powered by Booksy</span>
+      </div>
+      <div class="booking-embed" role="region" aria-label="Booksy booking">
+        <iframe title="Booksy Calendar"
+          src="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working"
+          referrerpolicy="no-referrer" loading="lazy"></iframe>
+      </div>
+      <p class="embed-note">If the calendar doesn't load, <a class="btn primary" href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener">tap here to book on Booksy</a>.</p>
+    </div>
+  </section>
+
+  <section id="hours" aria-labelledby="hours-title">
+    <div class="container hours">
+      <div class="card">
+        <h3 id="hours-title" style="margin-top:0">Hours</h3>
+        <ul class="list" aria-label="Shop hours">
+          <li><span>Mon</span><span>10:00 – 7:00</span></li>
+          <li><span>Tue</span><span>10:00 – 7:00</span></li>
+          <li><span>Wed</span><span>10:00 – 7:00</span></li>
+          <li><span>Thu</span><span>10:00 – 7:00</span></li>
+          <li><span>Fri</span><span>10:00 – 7:00</span></li>
+          <li><span>Sat</span><span>10:00 – 7:00</span></li>
+          <li><span>Sun</span><span>Closed</span></li>
+        </ul>
+      </div>
+      <div class="card contact-card">
+        <h3 style="margin-top:0">Find Us</h3>
+        <p>📍 <strong>1675 Village Tr, Maplewood, MN 55109</strong></p>
+        <a href="https://maps.google.com/?q=1675+Village+Tr,+Maplewood,+MN+55109" target="_blank" rel="noopener">Open in Google Maps</a>
+        <a href="tel:+16513527374">Call/Text (651) 352-7374</a>
+        <a href="mailto:thevintagerazer@gmail.com">thevintagerazer@gmail.com</a>
+        <a href="https://www.instagram.com/thevintagerazor/" target="_blank" rel="noopener" style="margin-left:8px">@thevintagerazor</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span>© <span id="year"></span> The Vintage Razor. All rights reserved.</span>
+      <span class="muted">📧 <a href="mailto:thevintagerazer@gmail.com">thevintagerazer@gmail.com</a></span>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
+
