@@ -3,174 +3,114 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Vintage Razor | About</title>
-  <meta name="description" content="About The Vintage Razor — classic barbering with old-school soul and modern precision in Maplewood, MN." />
+  <title>ASG Cutz | About</title>
+  <meta name="description" content="ASG Cutz — clean fades, sharp line-ups, and consistent service in Little Canada, MN. Learn more about the studio and what you can expect." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="icon" href="vintage-razor-logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="icon" href="asg-cutz-logo.png">
   <style>
-    :root{
-      --bg:#0f1115; --surface:#141821; --muted:#9aa4b2; --text:#f3f5f7;
-      --brand:#d5a15e; --brand-2:#8f6b3b; --maxw:1100px; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
-    }
+    :root{ --bg:#0e1014; --line:#202835; --text:#eef2f7; --muted:#9aa4b2; --brand:#d9b77b; --brand-2:#8f6b3b; --maxw:1200px; --shadow:0 14px 40px rgba(0,0,0,.35); --radius:18px }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif}
-    a{color:inherit} img{max-width:100%;display:block}
+    body{margin:0;background:#0e1014;color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto}
+    a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
 
-    .nav{position:sticky;top:0;z-index:50;background:rgba(20,24,33,.85);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #1e2431}
-    .nav-inner{max-width:var(--maxw);margin:auto;display:flex;align-items:center;gap:12px;padding:10px 20px}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .brand-logo{width:40px;height:40px;object-fit:contain;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
-    .brand-name{font:700 18px/1 Playfair Display,serif;letter-spacing:.4px}
+    .nav{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);background:rgba(16,19,26,.85);backdrop-filter:saturate(140%) blur(10px)}
+    .nav-inner{max-width:var(--maxw);margin:auto;display:flex;align-items:center;gap:12px;padding:12px 20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand-logo{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.45)}
+    .brand-name{font:700 24px/1 Playfair Display,serif}
     .spacer{flex:1}
-    .menu{display:flex;gap:10px}
-    .btn{padding:10px 14px;border-radius:999px;border:1px solid #2a3140;text-decoration:none;transition:.2s background,.2s border}
-    .btn:hover{background:#1a2030}
-    .primary{border:0;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#111;font-weight:800}
-    .active{background:#1a2030;border-color:#3a4356}
+    .pill{padding:10px 16px;border-radius:999px;border:1px solid var(--line)}
+    .primary{border:none;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#111;font-weight:800}
 
-    .hero{position:relative;overflow:hidden}
-    .hero-inner{max-width:var(--maxw);margin:auto;display:grid;gap:30px;align-items:center;padding:72px 20px}
-    @media(min-width:900px){.hero-inner{grid-template-columns:1.1fr .9fr;padding:96px 20px}}
-    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#1a2030;border:1px solid #2a3140;color:#cbd5e1;font-size:12px}
-    h1{font:700 clamp(34px,5vw,56px)/1.1 Playfair Display,serif;margin:12px 0 14px}
-    .hero p{color:var(--muted);margin:0 0 24px}
-    .hero-card{background:linear-gradient(180deg,#171b24,#121722 60%);border:1px solid #242b3a;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-    .hero-photo{border:1px solid #2a3140;border-radius:14px;overflow:hidden}
-    .hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;min-height:520px;background:#0b0e14}
-
-    section{padding:56px 20px}
-    .container{max-width:var(--maxw);margin:auto}
-    .grid{display:grid;gap:16px}
-    @media(min-width:900px){.grid.cols-2{grid-template-columns:1.2fr .8fr}}
-
-    .card{background:linear-gradient(180deg,#151a24,#121722);border:1px solid #242b3a;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-    .list{list-style:none;padding:0;margin:0}
-    .list li{display:flex;gap:10px;align-items:flex-start;margin:10px 0}
-    .dot{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));margin-top:9px;flex:0 0 8px}
+    .hero{max-width:var(--maxw);margin:0 auto;padding:80px 20px;display:grid;gap:32px}
+    @media(min-width:980px){.hero{grid-template-columns:1.1fr .9fr;padding:100px 20px}}
+    h1{font:700 clamp(36px,5vw,60px)/1.05 Playfair Display,serif;margin:10px 0 14px}
     .muted{color:var(--muted)}
+    .card{background:linear-gradient(180deg,#141a27,#101521);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+    h2{font:600 26px/1.2 Inter,system-ui;margin:0 0 16px}
+    .list{list-style:none;margin:0;padding:0}
+    .list li{display:flex;gap:10px;margin:12px 0}
+    .dot{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));margin-top:10px;flex:0 0 8px}
 
-    /* Mobile menu: hidden by default (prevents double nav) */
-    .mobile{display:none}
-    .mobile-toggle{display:none}
-    @media(max-width:760px){
-      .menu{display:none}
-      .mobile-toggle{display:inline-flex;margin-left:auto;padding:8px 10px;border-radius:10px;border:1px solid #2a3140;background:#1a2030}
-      .mobile.open{display:flex;flex-direction:column;gap:8px;padding:10px 20px;border-top:1px solid #1e2431}
-      .mobile a{padding:10px 12px;border-radius:10px;border:1px solid #2a3140;text-decoration:none;background:#131826}
-    }
+    .social-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#141b2b}
 
-    footer{border-top:1px solid #1e2431;padding:28px 20px;color:#9aa4b2}
+    footer{border-top:1px solid var(--line);padding:26px 20px;color:var(--muted)}
   </style>
 </head>
 <body>
   <!-- NAV -->
-  <nav class="nav" aria-label="Primary">
+  <nav class="nav">
     <div class="nav-inner">
-        <a class="brand" href="index.html#home" aria-label="Go to home">
-            <img src="vintage-razor-logo.png" alt="The Vintage Razor logo" class="brand-logo">
-            <span class="brand-name">The Vintage Razor</span>
-        </a>
+      <a class="brand" href="index.html#home">
+        <img src="asg-cutz-logo.png" alt="ASG Cutz logo" class="brand-logo" width="72" height="72">
+        <span class="brand-name">ASG Cutz</span>
+      </a>
       <div class="spacer"></div>
-      <div class="menu" role="menubar">
-        <a class="btn active" href="about.html" role="menuitem">About</a>
-        <a class="btn" href="index.html#services" role="menuitem">Services</a>
-        <a class="btn" href="index.html#gallery" role="menuitem">Gallery</a>
-        <a class="btn" href="index.html#hours" role="menuitem">Hours</a>
-        <a class="btn primary" href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener">Book Now</a>
+      <div class="menu">
+        <a class="pill" href="index.html#services">Services</a>
+        <a class="pill" href="index.html#gallery">Gallery</a>
+        <a class="pill" href="index.html#hours">Hours</a>
+        <a class="pill primary" href="https://booksy.com/en-us/1549300_asg-cutz_barber-shop_115587_little-canada" target="_blank" rel="noopener">Book Now</a>
       </div>
-      <button class="mobile-toggle" aria-label="Open menu" onclick="document.querySelector('.mobile').classList.toggle('open')">☰</button>
-    </div>
-    <div class="mobile" aria-label="Mobile menu">
-      <a href="about.html" onclick="this.closest('.mobile').classList.remove('open')">About</a>
-      <a href="index.html#services" onclick="this.closest('.mobile').classList.remove('open')">Services</a>
-      <a href="index.html#gallery" onclick="this.closest('.mobile').classList.remove('open')">Gallery</a>
-      <a href="index.html#hours" onclick="this.closest('.mobile').classList.remove('open')">Hours</a>
-      <a href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener" onclick="this.closest('.mobile').classList.remove('open')">Book Now</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner">
-      <div>
-        <span class="badge">Classic • Clean • Consistent</span>
-        <h1>About The Vintage Razor</h1>
-        <p class="muted">
-          Old-school soul. Modern precision. The Vintage Razor is a one-chair studio where you get
-          focused attention, a clean cut, and a relaxed vibe. Every appointment starts with a quick
-          consult so we’re locked in on your look before the clippers touch your head.
-        </p>
-      </div>
-      <div class="hero-card">
-        <div class="hero-photo">
-          <img src="hero.jpg" alt="Classic barbershop interior with vintage chairs">
-        </div>
+  <section class="hero">
+    <div>
+      <span class="pill" style="border:1px solid #202835;background:#171e2c">About</span>
+      <h1>Focused on detail, built on trust.</h1>
+      <p class="muted">
+        At ASG Cutz, the goal is simple — give every client a clean, sharp look that fits their style.  
+        Each appointment starts with a quick conversation to understand what you want, then it’s all about precision, detail, and consistency.  
+      </p>
+      <p class="muted">
+        The studio is designed to be comfortable and straightforward. You’ll always get clean tools, fresh blades, and a reliable cut that feels right every time. 
+        It’s not about rushing — it’s about doing the work carefully so you leave confident.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <a class="pill primary" href="https://booksy.com/en-us/1549300_asg-cutz_barber-shop_115587_little-canada" target="_blank" rel="noopener">Book on Booksy</a>
+        <a class="pill" href="index.html#gallery">See the work</a>
       </div>
     </div>
-  </header>
-
-  <!-- STORY / VALUES -->
-  <section>
-    <div class="container grid cols-2">
-      <div class="card">
-        <h2 style="font:700 28px/1.2 Playfair Display,serif;margin:0 0 10px">Our Approach</h2>
-        <ul class="list">
-          <li><span class="dot"></span><div><strong>Consultation first.</strong> Bring a photo or describe the vibe—fade level, taper, beard shape, all that. We agree on the plan before the cut.</div></li>
-          <li><span class="dot"></span><div><strong>Precision + detail.</strong> Clean sections, crisp lines, balanced fades. Enhancements by request.</div></li>
-          <li><span class="dot"></span><div><strong>Clean tools, fresh blades.</strong> Combs and guards are sanitized; razors are single-use.</div></li>
-          <li><span class="dot"></span><div><strong>Respect for your time.</strong> On-time starts whenever possible. Running late? Text and we’ll work it out.</div></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2 style="font:700 28px/1.2 Playfair Display,serif;margin:0 0 10px">What to Expect</h2>
-        <ul class="list">
-          <li><span class="dot"></span><div>Fades (low/mid/high), tapers, line-ups, scissor work, beard shaping, hot-towel neck finish on request.</div></li>
-          <li><span class="dot"></span><div>Kid-friendly cuts (under 12) with patience and a comfortable pace.</div></li>
-          <li><span class="dot"></span><div>Cashless friendly—final pricing and checkout handled through Booksy.</div></li>
-          <li><span class="dot"></span><div>Simple menu, no surprises. If you’re not sure what to book, choose <em>Haircut</em> or <em>Haircut &amp; Beard</em> and add notes.</div></li>
-        </ul>
-      </div>
+    <div class="card">
+      <img src="hero.jpg" alt="Studio interior">
     </div>
   </section>
 
-  <!-- CONTACT / CTA -->
-  <section>
-    <div class="container grid cols-2">
-      <div class="card">
-        <h2 style="font:700 28px/1.2 Playfair Display,serif;margin:0 0 10px">Location & Hours</h2>
-        <p>📍 <strong>1675 Village Tr, Maplewood, MN 55109</strong></p>
-        <p class="muted">Mon–Sat: 10:00 – 7:00 • Sun: Closed</p>
-        <p>
-          <a class="btn" href="https://maps.google.com/?q=1675+Village+Tr,+Maplewood,+MN+55109" target="_blank" rel="noopener">Open in Google Maps</a>
-        </p>
-      </div>
+  <!-- EXTRA DETAILS -->
+  <section style="max-width:var(--maxw);margin:0 auto;padding:0 20px 80px;display:grid;gap:28px">
+    <div class="card">
+      <h2>What to Expect</h2>
+      <ul class="list">
+        <li><span class="dot"></span><div><strong>Consult first.</strong> Every cut starts with a quick plan so the result matches your vision.</div></li>
+        <li><span class="dot"></span><div><strong>Attention to detail.</strong> Clean fades, balanced lines, and a polished finish.</div></li>
+        <li><span class="dot"></span><div><strong>Clean & reliable.</strong> Sanitized tools, single-use razors, and on-time appointments.</div></li>
+        <li><span class="dot"></span><div><strong>All styles welcome.</strong> Fades, tapers, line-ups, beard work, or a simple trim — done right.</div></li>
+      </ul>
+    </div>
 
-      <div class="card">
-        <h2 style="font:700 28px/1.2 Playfair Display,serif;margin:0 0 10px">Book & Connect</h2>
-        <p>Text or call for questions, or book directly on Booksy.</p>
-        <p>
-          <a class="btn primary" href="https://booksy.com/pro/en-us/1549300/calendar?date=today&view=day&staffers=working" target="_blank" rel="noopener">Book on Booksy</a>
-          <a class="btn" href="tel:+16513527374">Call/Text (651) 352-7374</a>
-        </p>
-        <p class="muted" style="margin-top:6px">
-          📧 <a href="mailto:thevintagerazer@gmail.com">thevintagerazer@gmail.com</a> &nbsp;·&nbsp;
-          IG: <a href="https://www.instagram.com/thevintagerazor/" target="_blank" rel="noopener">@thevintagerazor</a>
-        </p>
+    <div class="card">
+      <h2>Connect</h2>
+      <p class="muted">See more cuts, updates, and content online.</p>
+      <div class="social-links">
+        <a class="chip" href="https://www.instagram.com/asg_cutz/" target="_blank" rel="noopener">📷 Instagram</a>
+        <a class="chip" href="https://www.tiktok.com/@asg_cutz" target="_blank" rel="noopener">🎵 TikTok</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <span>© <span id="year"></span> The Vintage Razor. All rights reserved.</span>
-      <span class="muted">📧 <a href="mailto:thevintagerazer@gmail.com">thevintagerazer@gmail.com</a></span>
+    <div style="max-width:var(--maxw);margin:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <span>© <span id="year"></span> ASG Cutz. All rights reserved.</span>
+      <a class="pill" href="index.html#home">Back home</a>
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
 </body>
 </html>
