@@ -110,14 +110,11 @@
     @media(max-width:760px){.float-book{display:inline-flex}}
 
     /* ========= POLISHED SCROLL-REVEAL ========= */
-    /* base */
     .reveal{opacity:0;will-change:opacity,transform}
     .reveal.in{opacity:1;transform:none}
-    /* variants */
     .reveal-up{transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-right{transform:translateX(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
     .reveal-zoom{transform:scale(.98);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
-    /* accessibility: turn off motion if user prefers reduced motion */
     @media (prefers-reduced-motion: reduce){
       .reveal,.reveal-up,.reveal-right,.reveal-zoom{opacity:1 !important;transform:none !important;transition:none !important}
     }
@@ -137,6 +134,7 @@
         <a class="pill" href="#services" role="menuitem">Services</a>
         <a class="pill" href="#gallery" role="menuitem">Gallery</a>
         <a class="pill" href="#hours" role="menuitem">Hours</a>
+        <a class="pill" href="#connect" role="menuitem">Connect</a>
         <a class="pill primary" href="https://booksy.com/en-us/1549300_asg-cutz_barber-shop_115587_little-canada" target="_blank" rel="noopener">Book Now</a>
       </div>
     </div>
@@ -324,6 +322,7 @@
         </div>
       </div>
       <div class="gallery-grid" id="grid">
+        <!-- If you don't have all files, remove those lines. -->
         <img class="reveal reveal-up" src="gallery/style-01.jpg" alt="Cut style 1" loading="lazy">
         <img class="reveal reveal-up" src="gallery/style-02.jpg" alt="Cut style 2" loading="lazy">
         <img class="reveal reveal-up" src="gallery/style-03.jpg" alt="Cut style 3" loading="lazy">
@@ -336,6 +335,11 @@
         <img class="reveal reveal-up" src="gallery/style-10.jpg" alt="Cut style 10" loading="lazy">
         <img class="reveal reveal-up" src="gallery/style-11.jpg" alt="Cut style 11" loading="lazy">
         <img class="reveal reveal-up" src="gallery/style-12.jpg" alt="Cut style 12" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-13.jpg" alt="Cut style 13" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-14.jpg" alt="Cut style 14" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-15.jpg" alt="Cut style 15" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-16.jpg" alt="Cut style 16" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-17.jpg" alt="Cut style 17" loading="lazy">
       </div>
     </div>
 
@@ -381,29 +385,47 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container reveal reveal-up" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
-      <span>© <span id="year"></span> ASG Cutz. All rights reserved.</span>
-      <div class="social-footer">
-        <a class="pill" href="https://www.instagram.com/asg_cutz/" target="_blank" rel="noopener">Instagram</a>
-        <a class="pill" href="https://www.tiktok.com/@asg_cutz" target="_blank" rel="noopener">TikTok</a>
-        <a class="pill" href="#home">Back to top</a>
+  <!-- CONNECT / SOCIAL SECTION -->
+  <section id="connect">
+    <div class="container">
+      <div class="section-head reveal reveal-zoom">
+        <div>
+          <h2>Connect</h2>
+          <p class="section-sub">See more cuts, updates, and content online.</p>
+        </div>
+      </div>
+      <div class="card reveal reveal-up">
+        <div class="contact-row">
+          <a class="chip" href="https://www.instagram.com/asg_cutz/" target="_blank" rel="noopener">📷 Instagram @asg_cutz</a>
+          <a class="chip" href="https://www.tiktok.com/@asg_cutz" target="_blank" rel="noopener">🎵 TikTok @asg_cutz</a>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
   <!-- Floating Book (mobile) -->
   <a class="float-book" href="https://booksy.com/en-us/1549300_asg-cutz_barber-shop_115587_little-canada" target="_blank" rel="noopener">Book</a>
 
-  <script>
-    // Auto year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+      <span>© <span id="year"></span> ASG Cutz. All rights reserved.</span>
+      <a class="pill" href="#home">Back to top</a>
+    </div>
+  </footer>
 
-    // ===== HERO SLIDESHOW (from gallery) =====
+  <script>
+    // ===== Auto year (safe if #year not present yet) =====
+    (function(){ const yr=document.getElementById('year'); if(yr) yr.textContent=new Date().getFullYear(); })();
+
+    // ===== HERO SLIDESHOW (uses images from the gallery) =====
     (function () {
       const heroImg = document.getElementById('hero-slide');
       if (!heroImg) return;
+
+      // Respect reduced motion
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
       const candidateSrcs = Array.from(document.querySelectorAll('#grid img'))
         .map(img => img.getAttribute('src')).filter(Boolean);
 
@@ -432,20 +454,19 @@
     // ===== POLISHED SCROLL-REVEAL =====
     (function () {
       const all = document.querySelectorAll('.reveal');
-      // Stagger within logical groups
+      // Stagger inside common groups
       const groups = [
         document.querySelectorAll('#services .service'),
-        document.querySelectorAll('#gallery .gallery-grid img')
+        document.querySelectorAll('#gallery .gallery-grid img'),
+        document.querySelectorAll('#connect .card .contact-row a')
       ];
-      groups.forEach(nodes => {
-        nodes.forEach((el, idx) => el.style.transitionDelay = (idx % 6) * 60 + 'ms');
-      });
+      groups.forEach(nodes => nodes.forEach((el, idx) => el.style.transitionDelay = (idx % 6) * 60 + 'ms'));
 
       const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in');
-            io.unobserve(entry.target); // animate once
+            io.unobserve(entry.target); // animate once per element
           }
         });
       }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
@@ -454,22 +475,23 @@
     })();
 
     // ===== Lightbox =====
-    const grid = document.getElementById('grid');
-    const box = document.getElementById('lightbox');
-    const boxImg = document.getElementById('lightbox-img');
-    grid?.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && t.tagName === 'IMG') {
-        boxImg.src = t.src;
-        boxImg.alt = t.alt || 'Gallery image';
-        box.classList.add('open');
-      }
-    });
-    function closeLightbox(){ box.classList.remove('open'); boxImg.src=''; }
-    window.closeLightbox = closeLightbox;
-    box.addEventListener('click', (e)=>{ if(e.target === box) closeLightbox(); });
-    window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+    (function(){
+      const grid = document.getElementById('grid');
+      const box = document.getElementById('lightbox');
+      const boxImg = document.getElementById('lightbox-img');
+      grid?.addEventListener('click', (e) => {
+        const t = e.target;
+        if (t && t.tagName === 'IMG') {
+          boxImg.src = t.src;
+          boxImg.alt = t.alt || 'Gallery image';
+          box.classList.add('open');
+        }
+      });
+      function closeLightbox(){ box.classList.remove('open'); boxImg.src=''; }
+      window.closeLightbox = closeLightbox;
+      box.addEventListener('click', (e)=>{ if(e.target === box) closeLightbox(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+    })();
   </script>
 </body>
 </html>
-
