@@ -10,34 +10,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" href="asg-cutz-logo.png">
   <style>
-    :root{ --bg:#0e1014; --line:#202835; --text:#eef2f7; --muted:#9aa4b2; --brand:#d9b77b; --brand-2:#8f6b3b; --maxw:1200px; --shadow:0 14px 40px rgba(0,0,0,.35); --radius:18px }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:#0e1014;color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto}
-    a{color:inherit;text-decoration:none} img{max-width:100%;display:block}
+    :root{
+      --bg:#0e1014; --surface:#141a27; --line:#202835;
+      --text:#eef2f7; --muted:#9aa4b2; --subtle:#cfd6e1;
+      --brand:#d9b77b; --brand-2:#8f6b3b;
+      --radius:18px; --radius-xl:22px;
+      --shadow:0 14px 40px rgba(0,0,0,.35);
+      --maxw:1440px; /* match homepage width */
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 700px at 0% -10%, #14192a 0%, rgba(20,25,42,0) 60%),
+        radial-gradient(1200px 700px at 120% -30%, #1a2137 0%, rgba(26,33,55,0) 55%),
+        var(--bg);
+      color:var(--text);
+      font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-    .nav{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);background:rgba(16,19,26,.85);backdrop-filter:saturate(140%) blur(10px)}
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);
+      background:rgba(16,19,26,.85);backdrop-filter:saturate(140%) blur(10px)}
     .nav-inner{max-width:var(--maxw);margin:auto;display:flex;align-items:center;gap:12px;padding:12px 20px}
     .brand{display:flex;align-items:center;gap:14px}
     .brand-logo{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.45)}
     .brand-name{font:700 24px/1 Playfair Display,serif}
     .spacer{flex:1}
     .pill{padding:10px 16px;border-radius:999px;border:1px solid var(--line)}
+    .pill:hover{background:#141b2b}
     .primary{border:none;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#111;font-weight:800}
 
-    .hero{max-width:var(--maxw);margin:0 auto;padding:80px 20px;display:grid;gap:32px}
-    @media(min-width:980px){.hero{grid-template-columns:1.1fr .9fr;padding:100px 20px}}
-    h1{font:700 clamp(36px,5vw,60px)/1.05 Playfair Display,serif;margin:10px 0 14px}
+    /* HERO */
+    .hero{max-width:var(--maxw);margin:0 auto;padding:90px 20px;display:grid;gap:36px;align-items:center}
+    @media(min-width:980px){.hero{grid-template-columns:1.15fr .85fr;padding:120px 20px}}
+    h1{font:700 clamp(36px,5vw,64px)/1.05 Playfair Display,serif;margin:10px 0 14px}
     .muted{color:var(--muted)}
-    .card{background:linear-gradient(180deg,#141a27,#101521);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#171e2c;border:1px solid var(--line);color:#cbd5e1;font-size:12px}
+
+    .photo-card{border-radius:var(--radius-xl);overflow:hidden;border:1px solid #263047;box-shadow:var(--shadow);background:linear-gradient(180deg,#141a27,#101521);padding:16px}
+    /* slideshow target */
+    #about-slide{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;min-height:520px;background:#0b0e14;transition:opacity .6s ease}
+    #about-slide.is-fading{opacity:.08}
+
+    /* CONTENT CARDS */
+    .section{max-width:var(--maxw);margin:0 auto;padding:0 20px 90px}
+    .grid{display:grid;gap:20px}
+    @media(min-width:980px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    .card{background:linear-gradient(180deg,#141a27,#101521);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}
     h2{font:600 26px/1.2 Inter,system-ui;margin:0 0 16px}
     .list{list-style:none;margin:0;padding:0}
     .list li{display:flex;gap:10px;margin:12px 0}
     .dot{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));margin-top:10px;flex:0 0 8px}
-
     .social-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#141b2b}
 
     footer{border-top:1px solid var(--line);padding:26px 20px;color:var(--muted)}
+
+    /* Scroll reveal */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; will-change:opacity,transform;}
+    .reveal.in{opacity:1; transform:none;}
   </style>
 </head>
 <body>
@@ -60,15 +96,16 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div>
-      <span class="pill" style="border:1px solid #202835;background:#171e2c">About</span>
+    <div class="reveal">
+      <span class="badge">About</span>
       <h1>Focused on detail, built on trust.</h1>
       <p class="muted">
-        At ASG Cutz, the goal is simple — give every client a clean, sharp look that fits their style.  
-        Each appointment starts with a quick conversation to understand what you want, then it’s all about precision, detail, and consistency.  
+        At ASG Cutz, the goal is simple — give every client a clean, sharp look that fits their style.
+        Each appointment starts with a quick plan so the result matches what you want. From there it’s all about precision,
+        balanced lines, and a polished finish.
       </p>
       <p class="muted">
-        The studio is designed to be comfortable and straightforward. You’ll always get clean tools, fresh blades, and a reliable cut that feels right every time. 
+        The studio is comfortable and straightforward: sanitized tools, fresh blades, and on-time starts.
         It’s not about rushing — it’s about doing the work carefully so you leave confident.
       </p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
@@ -76,29 +113,55 @@
         <a class="pill" href="index.html#gallery">See the work</a>
       </div>
     </div>
-    <div class="card">
-      <img src="hero.jpg" alt="Studio interior">
+    <div class="photo-card reveal">
+      <!-- SLIDESHOW IMAGE -->
+      <img id="about-slide" src="hero.jpg" alt="ASG Cutz gallery preview">
     </div>
   </section>
 
-  <!-- EXTRA DETAILS -->
-  <section style="max-width:var(--maxw);margin:0 auto;padding:0 20px 80px;display:grid;gap:28px">
-    <div class="card">
-      <h2>What to Expect</h2>
-      <ul class="list">
-        <li><span class="dot"></span><div><strong>Consult first.</strong> Every cut starts with a quick plan so the result matches your vision.</div></li>
-        <li><span class="dot"></span><div><strong>Attention to detail.</strong> Clean fades, balanced lines, and a polished finish.</div></li>
-        <li><span class="dot"></span><div><strong>Clean & reliable.</strong> Sanitized tools, single-use razors, and on-time appointments.</div></li>
-        <li><span class="dot"></span><div><strong>All styles welcome.</strong> Fades, tapers, line-ups, beard work, or a simple trim — done right.</div></li>
-      </ul>
-    </div>
+  <!-- DETAILS -->
+  <section class="section">
+    <div class="grid cols-2">
+      <div class="card reveal">
+        <h2>What to Expect</h2>
+        <ul class="list">
+          <li><span class="dot"></span><div><strong>Consult first.</strong> We confirm your plan (lengths, fade, beard, extras) before clippers touch hair.</div></li>
+          <li><span class="dot"></span><div><strong>Attention to detail.</strong> Clean fades, symmetry, and crisp line-ups from every angle.</div></li>
+          <li><span class="dot"></span><div><strong>Clean & reliable.</strong> Sanitized tools, single-use razors, and on-time appointments.</div></li>
+          <li><span class="dot"></span><div><strong>All styles welcome.</strong> Fades, tapers, line-ups, scissor work, beard shaping, or a simple trim — done right.</div></li>
+        </ul>
+      </div>
 
-    <div class="card">
-      <h2>Connect</h2>
-      <p class="muted">See more cuts, updates, and content online.</p>
-      <div class="social-links">
-        <a class="chip" href="https://www.instagram.com/asg_cutz/" target="_blank" rel="noopener">📷 Instagram</a>
-        <a class="chip" href="https://www.tiktok.com/@asg_cutz" target="_blank" rel="noopener">🎵 TikTok</a>
+      <div class="card reveal">
+        <h2>Studio & Policies</h2>
+        <ul class="list">
+          <li><span class="dot"></span><div><strong>Location.</strong> Little Canada, MN — <a href="https://maps.google.com/?q=Little+Canada,+MN" target="_blank" rel="noopener">Open in Maps</a>.</div></li>
+          <li><span class="dot"></span><div><strong>Booking.</strong> All appointments through Booksy. Add notes for special requests.</div></li>
+          <li><span class="dot"></span><div><strong>Timing.</strong> Please arrive on time. 10-minute late window; after that we may need to reschedule.</div></li>
+          <li><span class="dot"></span><div><strong>Sanitation.</strong> Tools are cleaned between clients; fresh blades every service.</div></li>
+        </ul>
+        <div class="social-links" style="margin-top:16px">
+          <a class="chip" href="mailto:thevintagerazer@gmail.com">✉️ thevintagerazer@gmail.com</a>
+          <a class="chip" href="tel:+16513527374">📞 (651) 352-7374</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>Follow</h2>
+        <p class="muted">See more cuts, before/afters, and updates.</p>
+        <div class="social-links">
+          <a class="chip" href="https://www.instagram.com/asg_cutz/" target="_blank" rel="noopener">📷 Instagram @asg_cutz</a>
+          <a class="chip" href="https://www.tiktok.com/@asg_cutz" target="_blank" rel="noopener">🎵 TikTok @asg_cutz</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h2>FAQ</h2>
+        <ul class="list">
+          <li><span class="dot"></span><div><strong>Do you cut kids?</strong> Yes — patient, kid-friendly pace to keep them comfortable.</div></li>
+          <li><span class="dot"></span><div><strong>Do you take walk-ins?</strong> Booksy is the fastest way to secure a spot; limited walk-ins if time allows.</div></li>
+          <li><span class="dot"></span><div><strong>Payment?</strong> Checkout handled through Booksy.</div></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -111,6 +174,63 @@
     </div>
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Scroll reveal (same feel as homepage) =====
+    (function () {
+      const toReveal = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+      toReveal.forEach((el, idx) => {
+        el.style.transitionDelay = (idx % 6) * 60 + 'ms';
+        io.observe(el);
+      });
+    })();
+
+    // ===== ABOUT PAGE SLIDESHOW (pulls from /gallery) =====
+    (function () {
+      const img = document.getElementById('about-slide');
+      if (!img) return;
+
+      // Build list: gallery/style-01.jpg ... style-12.jpg
+      const candidates = Array.from({length: 12}, (_, i) =>
+        `gallery/style-${String(i+1).padStart(2,'0')}.jpg`
+      );
+
+      // Preload and keep only images that actually load
+      Promise.all(candidates.map(src => new Promise(resolve => {
+        const im = new Image();
+        im.onload = () => resolve(src);
+        im.onerror = () => resolve(null);
+        im.src = src;
+      }))).then(list => {
+        const slides = list.filter(Boolean);
+        if (!slides.length) return; // fall back to hero.jpg
+
+        let i = 0;
+        const swapTo = (src) => {
+          img.classList.add('is-fading');
+          setTimeout(() => {
+            img.src = src;
+            if (img.complete) img.classList.remove('is-fading');
+            else img.onload = () => img.classList.remove('is-fading');
+          }, 220);
+        };
+
+        // Start and rotate
+        swapTo(slides[i]);
+        setInterval(() => { i = (i + 1) % slides.length; swapTo(slides[i]); }, 3500);
+      });
+    })();
+  </script>
 </body>
 </html>
+

@@ -17,7 +17,7 @@
       --brand:#d9b77b; --brand-2:#8f6b3b;
       --radius-xl:22px; --radius:16px; --radius-sm:10px;
       --shadow:0 14px 40px rgba(0,0,0,.35);
-      --maxw:1200px;
+      --maxw:1440px; /* site-wide width */
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -57,7 +57,8 @@
     .hero p{color:var(--subtle);margin:0 0 26px}
     .hero-card{background:linear-gradient(180deg,#151a24,#111622);border:1px solid var(--line);border-radius:var(--radius-xl);box-shadow:var(--shadow);padding:16px}
     .hero-photo{border-radius:18px;overflow:hidden;border:1px solid #263047}
-    .hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;min-height:540px;background:#0b0e14}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;min-height:540px;background:#0b0e14;transition:opacity .6s ease}
+    .hero-photo img.is-fading{opacity:.08}
 
     /* SECTION GENERIC */
     section{padding:70px 20px;scroll-margin-top:90px}
@@ -107,6 +108,19 @@
     .social-footer{display:flex;gap:10px;flex-wrap:wrap}
     .float-book{position:fixed;right:16px;bottom:16px;z-index:60;border:none;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#111;font-weight:800;border-radius:999px;padding:12px 16px;box-shadow:0 10px 30px rgba(0,0,0,.45);display:none}
     @media(max-width:760px){.float-book{display:inline-flex}}
+
+    /* ========= POLISHED SCROLL-REVEAL ========= */
+    /* base */
+    .reveal{opacity:0;will-change:opacity,transform}
+    .reveal.in{opacity:1;transform:none}
+    /* variants */
+    .reveal-up{transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
+    .reveal-right{transform:translateX(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
+    .reveal-zoom{transform:scale(.98);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
+    /* accessibility: turn off motion if user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal,.reveal-up,.reveal-right,.reveal-zoom{opacity:1 !important;transform:none !important;transition:none !important}
+    }
   </style>
 </head>
 <body>
@@ -131,7 +145,7 @@
   <!-- HERO -->
   <header id="home" class="hero">
     <div class="hero-inner">
-      <div>
+      <div class="reveal reveal-zoom">
         <span class="badge">Clean fades • Sharp lines • Consistent results</span>
         <h1>Fresh cuts, every time.</h1>
         <p class="muted">Little Canada, MN — every appointment starts with a quick plan so the result matches your style.</p>
@@ -140,9 +154,10 @@
           <a class="btn ghost" href="#services">See services</a>
         </div>
       </div>
-      <div class="hero-card">
+      <div class="hero-card reveal reveal-right">
         <div class="hero-photo">
-          <img src="hero.jpg" alt="ASG Cutz studio interior">
+          <!-- Slideshow target -->
+          <img id="hero-slide" src="hero.jpg" alt="ASG Cutz studio interior">
         </div>
       </div>
     </div>
@@ -151,7 +166,7 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal reveal-zoom">
         <div>
           <h2>Services</h2>
           <p class="section-sub">Transparent pricing. On-time starts. Add notes when you book.</p>
@@ -161,7 +176,7 @@
 
       <div class="services">
         <!-- Haircut -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M14.5 17.5 4 7m0 10.5 10.5-10.5M4 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm0 15.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="m14 14 7 7"/></svg>
@@ -178,7 +193,7 @@
         </article>
 
         <!-- Beard -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M3 9s.5 7 9 10c8.5-3 9-10 9-10"/><path d="M7 9V7a5 5 0 0 1 10 0v2"/></svg>
@@ -195,7 +210,7 @@
         </article>
 
         <!-- Haircut & Beard -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M4 7a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/><path d="m14.5 17.5-10-10M4 17.5 14.5 7M20 4v16"/></svg>
@@ -212,7 +227,7 @@
         </article>
 
         <!-- Kid's haircut -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="m12 3 2.6 5.3 5.8.8-4.2 4 1 5.7L12 16l-5.2 2.8 1-5.7-4.2-4 5.8-.8Z"/></svg>
@@ -229,7 +244,7 @@
         </article>
 
         <!-- Beard shaping -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M3 9s.5 7 9 10c8.5-3 9-10 9-10"/></svg>
@@ -246,7 +261,7 @@
         </article>
 
         <!-- Beard trim -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M7 9V7a5 5 0 0 1 10 0v2"/></svg>
@@ -263,7 +278,7 @@
         </article>
 
         <!-- Buzz cut -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M3 12h18M7 5h10M7 19h10"/></svg>
@@ -280,7 +295,7 @@
         </article>
 
         <!-- Beard shave -->
-        <article class="service">
+        <article class="service reveal reveal-up">
           <div class="svc-top">
             <div class="svc-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d9b77b" stroke-width="1.6"><path d="M4 15h16M6 15l3-8h6l3 8"/></svg>
@@ -302,25 +317,25 @@
   <!-- GALLERY -->
   <section id="gallery">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal reveal-zoom">
         <div>
           <h2>Gallery</h2>
           <p class="section-sub">A few recent cuts.</p>
         </div>
       </div>
       <div class="gallery-grid" id="grid">
-        <img src="gallery/style-01.jpg" alt="Cut style 1" loading="lazy">
-        <img src="gallery/style-02.jpg" alt="Cut style 2" loading="lazy">
-        <img src="gallery/style-03.jpg" alt="Cut style 3" loading="lazy">
-        <img src="gallery/style-04.jpg" alt="Cut style 4" loading="lazy">
-        <img src="gallery/style-05.jpg" alt="Cut style 5" loading="lazy">
-        <img src="gallery/style-06.jpg" alt="Cut style 6" loading="lazy">
-        <img src="gallery/style-07.jpg" alt="Cut style 7" loading="lazy">
-        <img src="gallery/style-08.jpg" alt="Cut style 8" loading="lazy">
-        <img src="gallery/style-09.jpg" alt="Cut style 9" loading="lazy">
-        <img src="gallery/style-10.jpg" alt="Cut style 10" loading="lazy">
-        <img src="gallery/style-11.jpg" alt="Cut style 11" loading="lazy">
-        <img src="gallery/style-12.jpg" alt="Cut style 12" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-01.jpg" alt="Cut style 1" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-02.jpg" alt="Cut style 2" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-03.jpg" alt="Cut style 3" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-04.jpg" alt="Cut style 4" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-05.jpg" alt="Cut style 5" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-06.jpg" alt="Cut style 6" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-07.jpg" alt="Cut style 7" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-08.jpg" alt="Cut style 8" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-09.jpg" alt="Cut style 9" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-10.jpg" alt="Cut style 10" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-11.jpg" alt="Cut style 11" loading="lazy">
+        <img class="reveal reveal-up" src="gallery/style-12.jpg" alt="Cut style 12" loading="lazy">
       </div>
     </div>
 
@@ -334,7 +349,7 @@
   <!-- HOURS / CONTACT -->
   <section id="hours">
     <div class="container grid cols-2">
-      <div class="card">
+      <div class="card reveal reveal-right">
         <h2 style="margin-top:0">Location &amp; Hours</h2>
         <ul class="hours-list">
           <li><span>Monday</span><span>10:00 AM – 7:00 PM</span></li>
@@ -351,7 +366,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card reveal reveal-up">
         <h2 style="margin-top:0">Contact</h2>
         <div class="contact-row" style="margin-bottom:10px">
           <a class="chip" href="tel:+16513527374">📞 (651) 352-7374</a>
@@ -368,7 +383,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+    <div class="container reveal reveal-up" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
       <span>© <span id="year"></span> ASG Cutz. All rights reserved.</span>
       <div class="social-footer">
         <a class="pill" href="https://www.instagram.com/asg_cutz/" target="_blank" rel="noopener">Instagram</a>
@@ -385,13 +400,66 @@
     // Auto year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Gallery lightbox
+    // ===== HERO SLIDESHOW (from gallery) =====
+    (function () {
+      const heroImg = document.getElementById('hero-slide');
+      if (!heroImg) return;
+      const candidateSrcs = Array.from(document.querySelectorAll('#grid img'))
+        .map(img => img.getAttribute('src')).filter(Boolean);
+
+      Promise.all(candidateSrcs.map(src => new Promise(resolve => {
+        const im = new Image();
+        im.onload = () => resolve(src);
+        im.onerror = () => resolve(null);
+        im.src = src;
+      }))).then(list => {
+        const slides = list.filter(Boolean);
+        if (!slides.length) return;
+        let i = 0;
+        const swapTo = (src) => {
+          heroImg.classList.add('is-fading');
+          setTimeout(() => {
+            heroImg.src = src;
+            if (heroImg.complete) heroImg.classList.remove('is-fading');
+            else heroImg.onload = () => heroImg.classList.remove('is-fading');
+          }, 220);
+        };
+        swapTo(slides[i]);
+        setInterval(() => { i = (i + 1) % slides.length; swapTo(slides[i]); }, 3500);
+      });
+    })();
+
+    // ===== POLISHED SCROLL-REVEAL =====
+    (function () {
+      const all = document.querySelectorAll('.reveal');
+      // Stagger within logical groups
+      const groups = [
+        document.querySelectorAll('#services .service'),
+        document.querySelectorAll('#gallery .gallery-grid img')
+      ];
+      groups.forEach(nodes => {
+        nodes.forEach((el, idx) => el.style.transitionDelay = (idx % 6) * 60 + 'ms');
+      });
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target); // animate once
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+
+      all.forEach(el => io.observe(el));
+    })();
+
+    // ===== Lightbox =====
     const grid = document.getElementById('grid');
     const box = document.getElementById('lightbox');
     const boxImg = document.getElementById('lightbox-img');
     grid?.addEventListener('click', (e) => {
       const t = e.target;
-      if(t && t.tagName === 'IMG'){
+      if (t && t.tagName === 'IMG') {
         boxImg.src = t.src;
         boxImg.alt = t.alt || 'Gallery image';
         box.classList.add('open');
